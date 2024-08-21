@@ -31,8 +31,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'luochen1990/rainbow'
   Plug 'Raimondi/delimitMate'
   Plug 'lixuannan/VOIM'
+  Plug 'joshdick/onedark.vim'
 call plug#end()
 
+colorscheme onedark
 
 map <F5> :RunCode %<CR>
 imap <F5> <esc> :RunCode %<CR>
