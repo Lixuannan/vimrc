@@ -15,11 +15,16 @@ set cursorline
 set cursorcolumn
 set mouse=a
 set completeopt-=preview
+"let Tlist_Auto_Open = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
 autocmd VimEnter * NERDTreeToggle
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+set guiligatures=!\"#$%&()*+-./:<=>?@[]^_{\|~
+
 
 "vim-plug
 call plug#begin('~/.vim/plugged')
@@ -32,7 +37,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'Raimondi/delimitMate'
   Plug 'lixuannan/VOIM'
   Plug 'joshdick/onedark.vim'
+  Plug 'yegappan/taglist'
 call plug#end()
+
+imap jk <ESC>
+vmap jk <ESC>
+
+map <C-t> :below terminal <CR>
+imap <C-t> <ESC> :below terminal <CR>
+vmap <C-t> <ESC> :below terminal <CR>
 
 colorscheme onedark
 
@@ -48,12 +61,10 @@ map <F7> :DebugCode %<CR>
 imap <F7> <esc> :DebugCode %<CR>
 vmap <F7> <esc> :DebugCode %<CR>
 
-noremap <C-a> ggVG
-vnoremap <C-y> "+y
-nnoremap <C-p> "*p
-
 "NerdTree
 map <C-s> :NERDTreeToggle<CR>
+
+"map <C-c> <esc> :wq <CR> :q <CR> :q <CR>
 
 
 "auto-pairs
@@ -93,4 +104,7 @@ let g:rainbow_conf = {
 	\}
 
 
+noremap <C-a> ggVG
+vnoremap <C-y> "+y
+nnoremap <C-p> "*p
 
